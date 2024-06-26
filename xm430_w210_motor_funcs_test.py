@@ -76,7 +76,7 @@ def motor_execute(motor_id, goal_value, operating_mode):
     if operating_mode == 1:
         dxl_comm_result, dxl_error = packet_handler.write4ByteTxRx(port_handler, motor_id, ADDR_GOAL_VELOCITY,
                                                                 goal_value)    #unit: 0.229rpm, value between -1023 to 1023
-    elif operating_mode == 3:
+    elif operating_mode == 4:
         dxl_comm_result, dxl_error = packet_handler.write4ByteTxRx(port_handler, motor_id, GOAL_POSITION,
                                                                goal_value)    #unit: 0.088 [deg/pulse], 1[rev] : 0 ~ 4,095
     if dxl_comm_result != COMM_SUCCESS:
