@@ -81,7 +81,7 @@ def get_trajectory_linear(time):
     
 def get_trajectory_angular(time, motion_time):
     global x_r, y_r, v_r, omega_r, radius, theta_r
-    radius = 1.7
+    radius = 1.4
     a = 0.5 * math.pi / motion_time
     x_r = radius*math.cos(a * time)
     y_r = radius*math.sin(a * time)
@@ -95,7 +95,7 @@ def get_trajectory_angular(time, motion_time):
     #print("omega_r: ",omega_r)
     x_desired.append(x_r)
     y_desired.append(y_r)
-    theta_r = math.atan2(y_r,x_r) + math.pi/2
+    theta_r = math.atan2(y_r,x_r+0.0001) + math.pi/2
     print('theta_r = ' + str(theta_r))
 def calculate_v(theta_e, x_e):
     return v_r * math.cos(theta_e) + k_x * x_e
@@ -120,10 +120,10 @@ def pos_to_cmd(pos):    #degrees
     elif command_norm < -90:
         command_norm += 180
     #command = command%80
-    #if command > 80:
-     #   command = 80
-    #elif command < -80:
-     #   command = -80
+    if command_norm > 80:
+        command_norm = 80
+    elif command_norm < -80:
+        command_norm = -80
     print(command_norm)
     return int(command_norm / 0.088 )      #(1.5*factor*0.088))
 
@@ -148,9 +148,9 @@ def low_level_controller_velcmd(v,omega):
 
     #steering
     r = radius
-    kp_theta = 0.9
-    kp_x = 0.3
-    kp_y = 3
+    kp_theta = 1 #1.3
+    kp_x = 0.2 #2
+    kp_y = 0.8 #3
     lw = 0.19    #distance between wheels
     delta_r = math.atan(L/(r+0.5*lw))
     delta_l = math.atan(L/(r-0.5*lw))
