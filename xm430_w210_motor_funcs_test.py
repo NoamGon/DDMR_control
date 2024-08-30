@@ -1,6 +1,5 @@
 from dynamixel_sdk import *
 
-# Control table addresses for XM430 motor
 ADDR_OPERATING_MODE = 11       # Address for operating mode
 ADDR_TORQUE_ENABLE = 64       # Address for torque enable
 ADDR_GOAL_VELOCITY = 104       # Address for goal velocity
@@ -62,17 +61,9 @@ def motor_init(dxl_id, operating_mode):
         print("Torque enable has been set successfully")
 
 
-'''/// START OF THE ALGORITHM ///'''
 def motor_execute(motor_id, goal_value, operating_mode):
     global port_handler
     global packet_handler
-    # if motor_id in [3,4,5,6]:
-    # # Set goal velocity/current/position...
-    #     dxl_comm_result, dxl_error = packet_handler.write4ByteTxRx(port_handler, motor_id, ADDR_GOAL_VELOCITY,
-    #                                                            goal_value)    #unit: 0.229rpm, value between -1023 to 1023
-    # elif motor_id in [1,2]:
-    #     dxl_comm_result, dxl_error = packet_handler.write4ByteTxRx(port_handler, motor_id, GOAL_POSITION,
-    #                                                            goal_value)    #unit: 0.088 [deg/pulse], 1[rev] : 0 ~ 4,095
     if operating_mode == 1:
         dxl_comm_result, dxl_error = packet_handler.write4ByteTxRx(port_handler, motor_id, ADDR_GOAL_VELOCITY,
                                                                 goal_value)    #unit: 0.229rpm, value between -1023 to 1023

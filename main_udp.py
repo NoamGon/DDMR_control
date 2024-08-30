@@ -59,10 +59,10 @@ for motor in MOTOR_LIST:
 
 def get_trajectory_linear(time):
     global x_r, y_r, v_r, omega_r, radius, theta_r
-    radius = 100000
-    x_r = 10*time/100
+    radius = 100000    #inf radius
+    x_r = 10*time/100    #[m]
     y_r = 0 
-    x_dot_r = 10*1/100
+    x_dot_r = 10*1/100     #10[cm/sec]
     y_dot_r = 0
     x_ddot_r = 0
     y_ddot_r = 0
