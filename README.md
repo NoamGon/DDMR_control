@@ -16,5 +16,9 @@ The trajectory tracking with non zero initial conditions:
 The trajectories that were tested are linear and circular trajectories, as expected to be in a greenhouse.
 After convergence was received, it was tested on the real robot. The algorithm was written in Python. The results for the circular trajectory are shown in the following video:
 
-https://github.com/user-attachments/assets/c302a9f4-5ff6-4af9-9755-6b04249bfd6c
+
+
+https://github.com/user-attachments/assets/6cde1240-d091-48ec-a549-76f691cbcc12
+
+
 
